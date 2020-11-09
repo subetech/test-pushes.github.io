@@ -1,15 +1,17 @@
 // firebase_subscribe.js
-firebase.initializeApp({
-    apiKey: "AIzaSyDXOA6BWVhQyCmexM-a9uSoJVO8qc_GiOM",
-    authDomain: "skillbox-messages-test-x1j24l.firebaseapp.com",
-    databaseURL: "https://skillbox-messages-test-x1j24l.firebaseio.com",
-    projectId: "skillbox-messages-test-x1j24l",
-    storageBucket: "skillbox-messages-test-x1j24l.appspot.com",
-    messagingSenderId: "819128614489",
-    appId: "1:819128614489:web:771a6906e816ffa9c97b48",
-    measurementId: "G-8CNLPYH8PS"
+navigator.serviceWorker.register('firebase-messaging-sw.js').then(function (registration) {
+    firebase.useServiceWorker(registration).initializeApp({
+        apiKey: "AIzaSyDXOA6BWVhQyCmexM-a9uSoJVO8qc_GiOM",
+        authDomain: "skillbox-messages-test-x1j24l.firebaseapp.com",
+        databaseURL: "https://skillbox-messages-test-x1j24l.firebaseio.com",
+        projectId: "skillbox-messages-test-x1j24l",
+        storageBucket: "skillbox-messages-test-x1j24l.appspot.com",
+        messagingSenderId: "819128614489",
+        appId: "1:819128614489:web:771a6906e816ffa9c97b48",
+        measurementId: "G-8CNLPYH8PS"
 
-});
+    })
+})
 
 // браузер поддерживает уведомления
 // вообще, эту проверку должна делать библиотека Firebase, но она этого не делает

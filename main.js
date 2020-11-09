@@ -71,7 +71,9 @@ const example1 = new Vue({
                 messaging.requestPermission()
                     .then(function () {
                         // получаем ID устройства
-                        messaging.getToken()
+                        messaging.getToken({
+                            serviceWorkerRegistration: registration
+                        })
                             .then(function (currentToken) {
                                 console.log(currentToken);
 

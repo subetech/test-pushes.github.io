@@ -81,7 +81,7 @@ const someButton = new Vue({
                             .then(function (currentToken) {
                                 console.log(currentToken);
 
-                                if (currentToken) {d
+                                if (currentToken) {
                                     sendTokenToServer(currentToken);
                                     this.$set(this.token, getToken());
                                 } else {

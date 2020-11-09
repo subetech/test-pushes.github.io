@@ -14,20 +14,20 @@ firebase.initializeApp({
 
 // браузер поддерживает уведомления
 // вообще, эту проверку должна делать библиотека Firebase, но она этого не делает
-// function makeSubscription() {
-//     if ('Notification' in window) {
-//         var messaging = firebase.messaging();
-//
-//         // пользователь уже разрешил получение уведомлений
-//         // подписываем на уведомления если ещё не подписали
-//         if (Notification.permission === 'granted') {
-//             subscribe();
-//         }
-//
-//         // по клику, запрашиваем у пользователя разрешение на уведомления
-//         // и подписываем его
-//     }
-// }
+function makeSubscription() {
+    if ('Notification' in window) {
+        var messaging = firebase.messaging();
+
+        // пользователь уже разрешил получение уведомлений
+        // подписываем на уведомления если ещё не подписали
+        if (Notification.permission === 'granted') {
+            example1.methods.subscribe();
+        }
+
+        // по клику, запрашиваем у пользователя разрешение на уведомления
+        // и подписываем его
+    }
+}
 
 
 // отправка ID на сервер

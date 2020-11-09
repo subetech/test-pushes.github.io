@@ -15,18 +15,6 @@ firebase.initializeApp({
 // браузер поддерживает уведомления
 // вообще, эту проверку должна делать библиотека Firebase, но она этого не делает
 
-if ('Notification' in window) {
-    var messaging = firebase.messaging();
-
-    // пользователь уже разрешил получение уведомлений
-    // подписываем на уведомления если ещё не подписали
-    if (Notification.permission === 'granted') {
-        example1.methods.subscribe();
-    }
-
-    // по клику, запрашиваем у пользователя разрешение на уведомления
-    // и подписываем его
-}
 
 
 // отправка ID на сервер
@@ -94,3 +82,16 @@ const example1 = new Vue({
 
     }
 })
+
+if ('Notification' in window) {
+    var messaging = firebase.messaging();
+
+    // пользователь уже разрешил получение уведомлений
+    // подписываем на уведомления если ещё не подписали
+    if (Notification.permission === 'granted') {
+        example1.methods.subscribe();
+    }
+
+    // по клику, запрашиваем у пользователя разрешение на уведомления
+    // и подписываем его
+}

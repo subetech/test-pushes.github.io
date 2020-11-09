@@ -28,6 +28,10 @@ if ('Notification' in window) {
     // и подписываем его
 }
 
+function getToken(){
+    const someToken = window.localStorage.getItem('sentFirebaseMessagingToken')
+    return someToken ? someToken : ""
+}
 
 
 // отправка ID на сервер
@@ -35,10 +39,10 @@ function sendTokenToServer(currentToken) {
     if (!isTokenSentToServer(currentToken)) {
         console.log('Отправка токена на сервер...');
 
-        var url = ''; // адрес скрипта на сервере который сохраняет ID устройства
-        $.post(url, {
-            token: currentToken
-        });
+        // var url = ''; // адрес скрипта на сервере который сохраняет ID устройства
+        // $.post(url, {
+        //     token: currentToken
+        // });
 
         setTokenSentToServer(currentToken);
     } else {
@@ -59,10 +63,10 @@ function setTokenSentToServer(currentToken) {
     );
 }
 
-const example1 = new Vue({
+const someButton = new Vue({
     el: '#container',
     data: {
-        counter: 0
+        token: getToken()
     },
     methods: {
         subscribe: function () {

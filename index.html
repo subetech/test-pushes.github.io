@@ -5,6 +5,7 @@
 <body>
 <div id="container">
     <h1>Pushes testing</h1>
+    <p v-if="token !== ''">Твой токен {{ token }}</p>
     <button v-on:click="subscribe()">Подписаться</button>
 </div>
 

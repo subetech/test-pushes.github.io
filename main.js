@@ -66,7 +66,7 @@ function setTokenSentToServer(currentToken) {
 const someButton = new Vue({
     el: '#container',
     data: {
-        token: getToken()
+        token: ""
     },
     methods: {
         subscribe: function () {

@@ -1,17 +1,16 @@
 // firebase_subscribe.js
-navigator.serviceWorker.register('firebase-messaging-sw.js').then(function (registration) {
-    firebase.useServiceWorker(registration).initializeApp({
-        apiKey: "AIzaSyDXOA6BWVhQyCmexM-a9uSoJVO8qc_GiOM",
-        authDomain: "skillbox-messages-test-x1j24l.firebaseapp.com",
-        databaseURL: "https://skillbox-messages-test-x1j24l.firebaseio.com",
-        projectId: "skillbox-messages-test-x1j24l",
-        storageBucket: "skillbox-messages-test-x1j24l.appspot.com",
-        messagingSenderId: "819128614489",
-        appId: "1:819128614489:web:771a6906e816ffa9c97b48",
-        measurementId: "G-8CNLPYH8PS"
 
-    })
-})
+firebase.initializeApp({
+    apiKey: "AIzaSyDXOA6BWVhQyCmexM-a9uSoJVO8qc_GiOM",
+    authDomain: "skillbox-messages-test-x1j24l.firebaseapp.com",
+    databaseURL: "https://skillbox-messages-test-x1j24l.firebaseio.com",
+    projectId: "skillbox-messages-test-x1j24l",
+    storageBucket: "skillbox-messages-test-x1j24l.appspot.com",
+    messagingSenderId: "819128614489",
+    appId: "1:819128614489:web:771a6906e816ffa9c97b48",
+    measurementId: "G-8CNLPYH8PS"
+
+});
 
 // браузер поддерживает уведомления
 // вообще, эту проверку должна делать библиотека Firebase, но она этого не делает
@@ -64,29 +63,31 @@ const example1 = new Vue({
     },
     methods: {
         subscribe: function () {
-            // запрашиваем разрешение на получение уведомлений
-            messaging.requestPermission()
-                .then(function () {
-                    // получаем ID устройства
-                    messaging.getToken()
-                        .then(function (currentToken) {
-                            console.log(currentToken);
+            navigator.serviceWorker.register('firebase-messaging-sw.js').then(function (registration) {
+                // запрашиваем разрешение на получение уведомлений
+                messaging.requestPermission()
+                    .then(function () {
+                        // получаем ID устройства
+                        messaging.getToken()
+                            .then(function (currentToken) {
+                                console.log(currentToken);
 
-                            if (currentToken) {
-                                sendTokenToServer(currentToken);
-                            } else {
-                                console.warn('Не удалось получить токен.');
+                                if (currentToken) {
+                                    sendTokenToServer(currentToken);
+                                } else {
+                                    console.warn('Не удалось получить токен.');
+                                    setTokenSentToServer(false);
+                                }
+                            })
+                            .catch(function (err) {
+                                console.warn('При получении токена произошла ошибка.', err);
                                 setTokenSentToServer(false);
-                            }
-                        })
-                        .catch(function (err) {
-                            console.warn('При получении токена произошла ошибка.', err);
-                            setTokenSentToServer(false);
-                        });
-                })
-                .catch(function (err) {
-                    console.warn('Не удалось получить разрешение на показ уведомлений.', err);
-                });
+                            });
+                    })
+                    .catch(function (err) {
+                        console.warn('Не удалось получить разрешение на показ уведомлений.', err);
+                    });
+            })
         }
 
     }

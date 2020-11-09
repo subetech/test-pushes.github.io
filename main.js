@@ -1,6 +1,14 @@
 // firebase_subscribe.js
 firebase.initializeApp({
-    messagingSenderId: 'BIxSEIFU6D-KWAbsyfbybW8OldB8EZS1jJ_7nOtuLQOhIv3pwqKEpfdSyQ4pAFDHbzn7bRtBTyTpo_LPfyDYjuQ'
+    apiKey: "AIzaSyDXOA6BWVhQyCmexM-a9uSoJVO8qc_GiOM",
+    authDomain: "skillbox-messages-test-x1j24l.firebaseapp.com",
+    databaseURL: "https://skillbox-messages-test-x1j24l.firebaseio.com",
+    projectId: "skillbox-messages-test-x1j24l",
+    storageBucket: "skillbox-messages-test-x1j24l.appspot.com",
+    messagingSenderId: "819128614489",
+    appId: "1:819128614489:web:771a6906e816ffa9c97b48",
+    measurementId: "G-8CNLPYH8PS"
+
 });
 
 // браузер поддерживает уведомления
@@ -16,9 +24,6 @@ if ('Notification' in window) {
 
     // по клику, запрашиваем у пользователя разрешение на уведомления
     // и подписываем его
-    $('#subscribe').on('click', function () {
-        subscribe();
-    });
 }
 
 // отправка ID на сервер

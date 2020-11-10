@@ -83,7 +83,7 @@ const someButton = new Vue({
 
                                 if (currentToken) {
                                     sendTokenToServer(currentToken);
-                                    this.$set(this.token, getToken());
+                                    this.token = currentToken
                                 } else {
                                     console.warn('Не удалось получить токен.');
                                     setTokenSentToServer(false);

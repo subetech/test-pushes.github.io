@@ -4,25 +4,25 @@
     <meta charset="UTF-8">
     <title>Пуши для пушвуш</title>
     <link rel="manifest" href="manifest.json">
+    <script src="https://cdn.pushwoosh.com/webpush/v3/pushwoosh-web-notifications.js" async></script>
+    <script type="text/javascript">
+        const Pushwoosh = Pushwoosh || [];
+        Pushwoosh.push(['init', {
+            logLevel: 'info', // possible values: error, info, debug
+            applicationCode: '02E13-91A15', // you application code from Pushwoosh Control Panel
+            // safariWebsitePushID: 'web.com.example.domain', //  unique reverse-domain string, obtained in you Apple Developer Portal. Only needed if you send push notifications to Safari browser
+            defaultNotificationTitle: 'Pushwoosh', // sets a default title for push notifications
+            defaultNotificationImage: 'https://yoursite.com/img/logo-medium.png', // URL to custom custom notification image
+            autoSubscribe: true, // or true. If true, prompts a user to subscribe for pushes upon SDK initialization
+            serviceWorkerUrl: "pushwoosh-service-worker.js",
+            subscribeWidget: {
+                enabled: true
+            },
+        }]);
+    </script>
 </head>
 <body>
 
-<script src="https://cdn.pushwoosh.com/webpush/v3/pushwoosh-web-notifications.js" async></script>
-<script type="text/javascript">
-    const Pushwoosh = Pushwoosh || [];
-    Pushwoosh.push(['init', {
-        logLevel: 'info', // possible values: error, info, debug
-        applicationCode: '02E13-91A15', // you application code from Pushwoosh Control Panel
-        // safariWebsitePushID: 'web.com.example.domain', //  unique reverse-domain string, obtained in you Apple Developer Portal. Only needed if you send push notifications to Safari browser
-        defaultNotificationTitle: 'Pushwoosh', // sets a default title for push notifications
-        defaultNotificationImage: 'https://yoursite.com/img/logo-medium.png', // URL to custom custom notification image
-        autoSubscribe: true, // or true. If true, prompts a user to subscribe for pushes upon SDK initialization
-        serviceWorkerUrl: "pushwoosh-service-worker.js",
-        subscribeWidget: {
-            enabled: true
-        },
-    }]);
-</script>
 
 </body>
 </html>

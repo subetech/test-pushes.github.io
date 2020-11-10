@@ -70,6 +70,7 @@ const someButton = new Vue({
     },
     methods: {
         subscribe: function () {
+            const _this = this
             navigator.serviceWorker.register('firebase-messaging-sw.js').then(function (registration) {
                 // запрашиваем разрешение на получение уведомлений
                 messaging.requestPermission()
@@ -83,7 +84,7 @@ const someButton = new Vue({
 
                                 if (currentToken) {
                                     sendTokenToServer(currentToken);
-                                    this.token = currentToken
+                                    _this.token = currentToken
                                 } else {
                                     console.warn('Не удалось получить токен.');
                                     setTokenSentToServer(false);
